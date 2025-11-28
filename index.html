@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Neon Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <ul class="names">
+        <h1> MEMBERS:</h1>
+        <li>DINGLASA</li>
+          <li>GALERA</li>
+            <li>ESMERO</li>
+              <li>ANACLETO</li>
+    </ul>
+
+  <div class="calculator">
+    <input type="text" id="viewValue" placeholder="0" readonly>
+
+    <div class="buttons">
+      <input type="button" value="7" onclick="insert('7')">
+      <input type="button" value="8" onclick="insert('8')">
+      <input type="button" value="9" onclick="insert('9')">
+      <input type="button" value="÷" onclick="insert('/') " class="op" aria-label="divide">
+
+      <input type="button" value="4" onclick="insert('4')">
+      <input type="button" value="5" onclick="insert('5')">
+      <input type="button" value="6" onclick="insert('6')">
+      <input type="button" value="×" onclick="insert('*')" class="op" aria-label="multiply">
+
+      <input type="button" value="1" onclick="insert('1')">
+      <input type="button" value="2" onclick="insert('2')">
+      <input type="button" value="3" onclick="insert('3')">
+      <input type="button" value="-" onclick="insert('-')" class="op" aria-label="minus">
+
+      <input type="button" value="0" onclick="insert('0')">
+      <input type="button" value="." onclick="insert('.')">
+      <input type="button" value="+" onclick="insert('+')" class="op" aria-label="plus">
+      <input type="button" value="C" onclick="clearView()" class="clear" aria-label="clear">
+
+      <input type="button" value="=" onclick="calculate()" class="equal" aria-label="equals">
+    </div>
+  </div>
+
+  <script>
+    var view = document.getElementById("viewValue");
+
+    function insert(num) {
+      
+      if (view.value === "0" && num !== "." && num !== "*" && num !== "/" && num !== "+" && num !== "-") {
+        view.value = num;
+      } else {
+        view.value += num;
+      }
+    }
+
+    function calculate() {
+      try {
+       
+        if (!view.value) return;
+        
+        view.value = eval(view.value);
+      } catch (e) {
+        view.value = "Error";
+      }
+    }
+
+    function clearView() {
+      view.value = "";
+    }
+  </script>
+</body>
+</html>
